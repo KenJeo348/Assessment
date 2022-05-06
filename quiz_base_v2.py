@@ -1,3 +1,7 @@
+
+import random
+
+
 def yes_no(question_text):
     while True:
 
@@ -42,7 +46,7 @@ def continue_or_quit_function():
 
         # If the user inputs <enter>, output 'Program continues to quiz.
         if continue_or_quit == "":
-            print("Program continues to quiz.")
+            print()
 
         # If the user inputs 'x', output 'You have quit the program', and a farewell message.
         elif continue_or_quit == "x":
@@ -55,6 +59,55 @@ def continue_or_quit_function():
             print("Please enter a valid answer. <enter> to play, or 'x' to quit.")
 
 
+def days_of_week_quiz(_quiz_score):
+    # Variables and lists
+    player_score = 0
+    question_number = 0
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    # Shuffling the (days) list in a random order for the quiz.
+    random.shuffle(days)
+
+    # While loop repeating until the user has gone through all the days.
+    while question_number < 7:
+
+        # Asking user the first day on the shuffled list in maori
+        user_answer = input(f"What is the Maori word for {days[question_number]}: ").lower()
+
+        # If statements telling that the user is correct if they got the answer right.
+        if days[question_number] == "Monday" and user_answer == "rahina":
+            print("You are Correct\n")
+
+        elif days[question_number] == "Tuesday" and user_answer == "ratu":
+            print("You are Correct\n")
+
+        elif days[question_number] == "Wednesday" and user_answer == "raapa":
+            print("You are Correct\n")
+
+        elif days[question_number] == "Thursday" and user_answer == "rapare":
+            print("You are Correct\n")
+
+        elif days[question_number] == "Friday" and user_answer == "ramere":
+            print("You are Correct\n")
+
+        elif days[question_number] == "Saturday" and user_answer == "rahoroi":
+            print("You are Correct\n")
+
+        elif days[question_number] == "Sunday" and user_answer == "ratapu":
+            print("You are Correct\n")
+
+        # Telling user they got it incorrect and canceling off the player_score += 1 with player_score -=1, (therefore 0 score)
+        else:
+            print("You are incorrect\n")
+            player_score -= 1
+
+        # Adding 1 to the question number and the player score for every question
+        question_number += 1
+        player_score += 1
+
+    # Returning users final score after all questions
+    return player_score
+
+
 # Main routine
 tried_before = yes_no("Have you tried the quiz before? (Y for yes/N for No): ")
 
@@ -63,5 +116,6 @@ if tried_before == "no":
 
 continue_or_quit_function()
 
-
-
+score = 0
+total_score = days_of_week_quiz(score)
+print(f"Your total score was {total_score}/7")
