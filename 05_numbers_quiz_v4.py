@@ -28,3 +28,6 @@ def numbers_quiz(_quiz_score):
 
 
 # Main routine
+score = 0
+total_score = numbers_quiz(score)
+print(f"Your total score was {total_score}/10")
