@@ -49,18 +49,22 @@ def quiz_chooser():
 
         # If the user inputs <enter>, output 'Program continues to quiz.
         if choose_quiz == 0:
+            print("You have quit the program\n"
+                  "We hope we could see you again.")
             exit()
 
         # If the user inputs 'x', output 'You have quit the program', and a farewell message.
         elif choose_quiz == 1:
-            days_of_week_quiz()
+            print("Redirect to days of the week quiz")
 
         elif choose_quiz == 2:
-            number
+            print("Redirect to Numbers 1-10 quiz")
 
         # If the user enters an invalid answer, output 'Please enter a valid answer'
         else:
             print("Please enter a valid answer. <enter> to play, or 'x' to quit.")
+            choose_quiz = 0
+
 
 
 def days_of_week_quiz(_quiz_score):
