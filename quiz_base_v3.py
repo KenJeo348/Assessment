@@ -56,15 +56,20 @@ def quiz_chooser():
         # If the user inputs 'x', output 'You have quit the program', and a farewell message.
         elif choose_quiz == 1:
             print("Redirect to days of the week quiz")
+            score = 0
+            total_score = days_of_week_quiz(score)
+            print(f"Your total score was {total_score}/7")
 
         elif choose_quiz == 2:
             print("Redirect to Numbers 1-10 quiz")
+            score = 0
+            total_score = numbers_quiz(score)
+            print(f"Your total score was {total_score}/10")
 
         # If the user enters an invalid answer, output 'Please enter a valid answer'
         else:
             print("Please enter a valid answer. <enter> to play, or 'x' to quit.")
             choose_quiz = 0
-
 
 
 def days_of_week_quiz(_quiz_score):
@@ -116,14 +121,39 @@ def days_of_week_quiz(_quiz_score):
     return player_score
 
 
+def numbers_quiz(_quiz_score):
+    player_score = 0
+    question_number = 0
+    # List of the days
+    numbers = [[1, "tahi"], [2, "rua"], [3, "toru"], [4, "wha"], [5, "rima"], [6, "ono"],
+            [7, "whitu"], [8, "waru"], [9, "iwa"], [10, "tekau"]]
+    random.shuffle(numbers)
+
+    while question_number < 10:
+
+        user_answer = input(f"What is the number {numbers[question_number][0]} in Maori: ").lower()
+
+        if user_answer == numbers[question_number][1]:
+            player_score += 1
+            print("you are correct")
+        else:
+            print("You are incorrect")
+
+        question_number += 1
+    return player_score
+
+
 # Main routine
 tried_before = yes_no("Have you tried the quiz before? (Y for yes/N for No): ")
 
 if tried_before == "no":
     instructions()
 
-continue_or_quit_function()
+quiz_chooser()
 
-score = 0
-total_score = days_of_week_quiz(score)
-print(f"Your total score was {total_score}/7")
+play_again = input("Do you want to play again (<enter> to play, or 'x' to quit): ")
+
+if play_again == "x":
+    print("You have quit the program we hope we could see you again")
+elif play_again == "":
+    quiz_chooser()
