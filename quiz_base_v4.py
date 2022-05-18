@@ -26,8 +26,10 @@ def instructions():
     print()
     print("<== How to Play == >\n"
           "\n"
-          "A random day of the week would be displayed to you.\n"
-          "You would have to write the displayed day in Maori/Te Reo\n"
+          "You would get to choose between two quiz's\n"
+          "'Days of The week in Maori' or 'Numbers 1 - 10 in Maori\n"
+          "After you choose you will get redirected to your chosen quiz"
+          "You would have to write the displayed Day/Number in Maori/Te Reo\n"
           "\n"
           "After answering each question you will get told if you were right or wrong.\n"
           "Your final score would be displayed at the end of the quiz, and you can either try again or leave the program.\n"
@@ -45,25 +47,25 @@ def quiz_chooser():
               "1: Redirects to Days of the Week quiz\n"
               "2: Redirects to Numbers 1-10 quiz")
         choose_quiz = int(input("Choose one of the options above and press enter: "))
+        print()
 
         # If the user inputs <enter>, output 'Program continues to quiz.
         if choose_quiz == 0:
-            print("You have quit the program\n"
-                  "We hope we could see you again.")
+            print(formatter("~", "Goodbye"))
             exit()
 
         # If the user inputs 'x', output 'You have quit the program', and a farewell message.
         elif choose_quiz == 1:
-            print("Redirect to days of the week quiz")
             score = 0
             total_score = days_of_week_quiz(score)
             print(f"Your total score was {total_score}/7")
+            print()
 
         elif choose_quiz == 2:
-            print("Redirect to Numbers 1-10 quiz")
             score = 0
             total_score = numbers_quiz(score)
             print(f"Your total score was {total_score}/10")
+            print()
 
         # If the user enters an invalid answer, output 'Please enter a valid answer'
         else:
@@ -75,7 +77,8 @@ def days_of_week_quiz(_quiz_score):
     # Variables and lists
     player_score = 0
     question_number = 0
-    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    days = [["Monday", "Rahina"], ["Tuesday", "Ratu"], ["Wednesday", "Raapa"], ["Thursday", "Rapare"],
+            ["Friday", "Ramere"], ["Saturday", "Rahoroi"] , ["Sunday", "Ratapu"]]
     # Shuffling the (days) list in a random order for the quiz.
     random.shuffle(days)
 
@@ -83,38 +86,19 @@ def days_of_week_quiz(_quiz_score):
     while question_number < 7:
 
         # Asking user the first day on the shuffled list in maori
-        user_answer = input(f"What is the Maori word for {days[question_number]}: ").lower()
+        user_answer = input(f"What is the Maori word for {days[question_number][0]}: ").title()
+        print()
 
-        # If statements telling that the user is correct if they got the answer right.
-        if days[question_number] == "Monday" and user_answer == "rahina":
-            print("You are Correct\n")
-
-        elif days[question_number] == "Tuesday" and user_answer == "ratu":
-            print("You are Correct\n")
-
-        elif days[question_number] == "Wednesday" and user_answer == "raapa":
-            print("You are Correct\n")
-
-        elif days[question_number] == "Thursday" and user_answer == "rapare":
-            print("You are Correct\n")
-
-        elif days[question_number] == "Friday" and user_answer == "ramere":
-            print("You are Correct\n")
-
-        elif days[question_number] == "Saturday" and user_answer == "rahoroi":
-            print("You are Correct\n")
-
-        elif days[question_number] == "Sunday" and user_answer == "ratapu":
-            print("You are Correct\n")
-
-        # Telling user they got it incorrect and canceling off the player_score += 1 with player_score -=1, (therefore 0 score)
+        if user_answer == days[question_number][1]:
+            player_score += 1
+            print(formatter("=", "You are correct"))
+            print()
         else:
-            print("You are incorrect\n")
-            player_score -= 1
+            print(formatter("*", "You are incorrect"))
+            print()
 
         # Adding 1 to the question number and the player score for every question
         question_number += 1
-        player_score += 1
 
     # Returning users final score after all questions
     return player_score
@@ -131,19 +115,33 @@ def numbers_quiz(_quiz_score):
     while question_number < 10:
 
         user_answer = input(f"What is the number {numbers[question_number][0]} in Maori: ").lower()
+        print()
 
         if user_answer == numbers[question_number][1]:
             player_score += 1
-            print("you are correct")
+            print(formatter("=", "You are correct"))
+            print()
         else:
-            print("You are incorrect")
+            print(formatter("*", "You are incorrect"))
+            print()
 
         question_number += 1
     return player_score
 
 
+def formatter(symbol, text):
+    sides = symbol * 3
+    formatted_text = f"{sides} {text} {sides}"
+    top_bottom = symbol * len(formatted_text)
+    return f"{top_bottom} \n{formatted_text}\n{top_bottom}"
+
+
 # Main routine
+print(formatter("-", "Welcome to the Maori quiz"))
+print()
+
 tried_before = yes_no("Have you tried the quiz before? (Y for yes/N for No): ")
+print()
 
 if tried_before == "no":
     instructions()
@@ -156,5 +154,5 @@ while play_again != "x":
     else:
         print("Please enter a valid answer")
     play_again = input("Do you want to play again (<enter> to play, or 'x' to quit): ")
-print("Goodbye\n"
-      "We hope we could see you again.")
+    print()
+print(formatter("~", "Goodbye"))
