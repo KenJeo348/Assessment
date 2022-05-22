@@ -1,8 +1,8 @@
-# Code from 03_continue_quit_v2 turned into a function.
+""" Based on 06_quiz_chooser_v1 modified so that it would work for
+inputs that are value errors such as strings."""
 
 
 def quiz_chooser():
-    choose_quiz = 0
     valid = False
     while not valid:
         try:
@@ -12,15 +12,16 @@ def quiz_chooser():
                   "2: Redirects to Numbers 1-10 quiz")
             choose_quiz = int(input("Choose one of the options above and press enter: "))
 
-            # If the user inputs <enter>, output 'Program continues to quiz.
+            # If the user inputs 0, exit the program
             if choose_quiz == 0:
                 exit()
 
-            # If the user inputs 'x', output 'You have quit the program', and a farewell message.
+            # If the user inputs 1, print 'Redirect to days of the week quiz'.
             elif choose_quiz == 1:
                 print("Redirect to days of the week quiz")
                 valid = True
 
+            # If the user inputs 2, print 'Redirect to Numbers 1-10 quiz'.
             elif choose_quiz == 2:
                 print("Redirect to Numbers 1-10 quiz")
                 valid = True
@@ -29,6 +30,7 @@ def quiz_chooser():
             else:
                 print("Please enter a valid answer. <enter> to play, or 'x' to quit.")
 
+        # If the user inputted a Value error, such as a string, output 'Please enter a valid answer'
         except ValueError:
             print("Please enter a valid answer. <enter> to play, or 'x' to qo quit")
 

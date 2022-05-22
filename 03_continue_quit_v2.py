@@ -1,6 +1,8 @@
 """ Code turned into a while Loop for more convenient testing
 and looping if user doesn't enter <enter> , or 'x'
+based on 03_continue_quit_v1
 """
+
 continue_or_quit = ""
 
 while continue_or_quit != "x":

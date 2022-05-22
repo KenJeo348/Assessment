@@ -1,3 +1,5 @@
+"""Giving the user a choice of quiting the quiz or continuing."""
+
 # Ask the user if they want to continue to the quiz.
 continue_or_quit = input("Do you want to continue to the quiz? <enter> to play or 'x' to quit:")
 

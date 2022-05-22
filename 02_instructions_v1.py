@@ -43,9 +43,14 @@ def instructions():
 
 
 # Main routine go here...
+
+# Ask if the user has tried the quiz before.
 tried_before = yes_no("Have you tried the quiz before? (Y for yes/N for No): ")
 
+# If they answer no show the instructions.
 if tried_before == "no":
     instructions()
+
+# Otherwise continue the program.
 else:
     print("Program continues")

@@ -1,4 +1,5 @@
-# Temporary While loop used for more convenient testing.
+"""Temporary While loop used for more convenient testing.
+Based on 01_yes_no_check_v1"""
 
 yes_no = ""
 while yes_no != "stop testing":

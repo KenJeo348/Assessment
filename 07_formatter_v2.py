@@ -11,9 +11,12 @@ def formatter(symbol, text):
     return f"{top_bottom} \n{formatted_text}\n{top_bottom}"
 
 
-# main routine
+# Main routine
+# Asking user what text they would want to format, and what symbol to use
 text_ = input("Enter the statement you want to format: ")
 symbol_ = input("What symbol do you want to use: ")
+
+# Output
 print()
 print(formatter(symbol_, text_))
 

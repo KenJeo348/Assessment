@@ -1,6 +1,6 @@
 """Component 4 (days of the week)
 04_days_of_week_quiz_v4 Made cleaner
-, and added more code commenting.
+, and added better code commenting.
 """
 
 import random

@@ -1,4 +1,5 @@
-# Code from 03_continue_quit_v2 turned into a function.
+""" Updated version of 03_continue_quit_v3 changed,
+so that the user has a choice between 2 quizzes and quiting."""
 
 
 def quiz_chooser():
@@ -10,14 +11,15 @@ def quiz_chooser():
               "2: Redirects to Numbers 1-10 quiz")
         choose_quiz = int(input("Choose one of the options above and press enter: "))
 
-        # If the user inputs <enter>, output 'Program continues to quiz.
+        # If the user inputs 0, exit the program
         if choose_quiz == 0:
             exit()
 
-        # If the user inputs 'x', output 'You have quit the program', and a farewell message.
+        # If the user inputs 1, print 'Redirect to days of the week quiz'.
         elif choose_quiz == 1:
             print("Redirect to days of the week quiz")
 
+        # If the user inputs 2, print 'Redirect to Numbers 1-10 quiz'.
         elif choose_quiz == 2:
             print("Redirect to Numbers 1-10 quiz")
 

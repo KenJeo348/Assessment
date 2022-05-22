@@ -1,6 +1,6 @@
 """Component 4 (days of the week)
-04_days_of_week_quiz_v4 Made cleaner
-, and added more code commenting.
+Different way of coding the quiz
+which is much more efficient than the previous way.
 """
 
 import random
@@ -21,9 +21,10 @@ def days_of_week_quiz(_quiz_score):
         # Asking user the first day on the shuffled list in maori
         user_answer = input(f"What is the Maori word for {days[question_number][0]}: ").title()
 
+        # Checking if the user got their answer right or wrong.
         if user_answer == days[question_number][1]:
             player_score += 1
-            print("you are correct")
+            print("You are correct")
         else:
             print("You are incorrect")
 

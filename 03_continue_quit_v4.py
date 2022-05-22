@@ -1,4 +1,6 @@
-# Code from 03_continue_quit_v2 turned into a function.
+"""Code has been changed so that it gives the user a choice
+of which quiz to go to or quit.
+Based on 03_continue_quit_v3"""
 
 
 def continue_or_quit_function():
@@ -10,17 +12,17 @@ def continue_or_quit_function():
               "2: Redirects to Numbers 1-10 quiz")
         continue_or_quit = int(input("Choose one of the options above and enter:"))
 
-        # If the user inputs <enter>, output 'Program continues to quiz.
+        # If the user inputs 0, output 'User has quit the program, then quit.
         if continue_or_quit == 0:
             print("User has quit the program. ")
 
             exit()
-
+        # If the user inputs 1, output 'Program Continues to days of the week quiz'.
         elif continue_or_quit == 1:
             print("Program Continues to days of the week quiz.")
             break
 
-        # If the user inputs 'x', output 'You have quit the program', and a farewell message.
+        # if the user inputs 2, output 'Program Continues to Numbers 1-10 quiz'.
         elif continue_or_quit == 2:
             print("Program Continues to Numbers 1-10 quiz.")
             break
