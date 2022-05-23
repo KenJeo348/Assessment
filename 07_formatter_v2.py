@@ -1,4 +1,4 @@
-"""Component 5 - statement formatter v2
+"""Component 7 - statement formatter v2
 Change v1 into a function
 """
 

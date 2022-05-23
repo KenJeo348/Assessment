@@ -1,6 +1,13 @@
+"""This is the final version of my Maori Quiz,
+it is assembled with all the updated versions of the components.
+This quiz tests the user on their maori knowledge and shows their score."""
+
+
+# 'import random' for random question generator
 import random
 
 
+# Function asking if user has played before.
 def yes_no(question_text):
     while True:
 
@@ -23,7 +30,9 @@ def yes_no(question_text):
             print("Please enter either Y/N or Yes/No\n")
 
 
+# Function that displays instructions
 def instructions():
+    # Instruction texts
     print()
     print("<== How to Play == >\n"
           "\n"
@@ -40,38 +49,41 @@ def instructions():
     print()
 
 
+# Function that gives the user a choice of which quiz to do, or (quit)
 def quiz_chooser():
+    score = 0
     valid = False
+    # Keep asking until a valid number has been inputted 0 - 2
     while not valid:
         try:
-            # Ask the user if they want to continue to the quiz.
+            # Options to choose from
             print("0: Quit the Program\n"
                   "1: Redirects to Days of the Week quiz\n"
                   "2: Redirects to Numbers 1-10 quiz\n")
+            # Asking for choice
             choose_quiz = int(input("Choose one of the options above and press enter: "))
             print()
 
-            # If the user inputs <enter>, output 'Program continues to quiz.
+            # If the user inputs 0, output 'Goodbye' than quit the program
             if choose_quiz == 0:
                 print(formatter("~", "Goodbye"))
                 exit()
 
-            # If the user inputs 'x', output 'You have quit the program', and a farewell message.
+            # If the user inputs 1, redirect to the days of the week quiz.
             elif choose_quiz == 1:
-                score = 0
                 total_score = days_of_week_quiz(score)
                 print(f"Your total score was {total_score}/7")
                 print()
                 valid = True
 
+            # If the user inputs 2, redirect to the numbers quiz.
             elif choose_quiz == 2:
-                score = 0
                 total_score = numbers_quiz(score)
                 print(f"Your total score was {total_score}/10")
                 print()
                 valid = True
 
-            # If the user enters an invalid answer, output 'Please enter a valid answer'
+        # If the user enters an invalid answer, output 'Please enter a valid answer'
             else:
                 print()
                 print(formatter("#", "Please enter a valid answer."))
@@ -83,6 +95,7 @@ def quiz_chooser():
             print()
 
 
+# Function containing days of the week quiz
 def days_of_week_quiz(_quiz_score):
     # Variables and lists
     player_score = 0
@@ -92,60 +105,76 @@ def days_of_week_quiz(_quiz_score):
     # Shuffling the (days) list in a random order for the quiz.
     random.shuffle(days)
 
+    # Welcome message
     print(formatter("-", "Welcome to the Days of the week quiz"))
     print()
 
-    # While loop repeating until the user has gone through all the days.
+    # While loop, repeating until the user has gone through all the days.
     while question_number < 7:
 
-        # Asking user the first day on the shuffled list in maori
+        # Asking user the day in order of the shuffled list.
         user_answer = input(f"What is the Maori word for {days[question_number][0]}: ").title()
         print()
 
+        # If the user got it right, output, "You are correct"
         if user_answer == days[question_number][1]:
             player_score += 1
             print(formatter("=", "You are correct"))
             print()
+        # If the user got it wrong, output, "You are incorrect"
         else:
             print(formatter("*", "You are incorrect"))
             print()
 
-        # Adding 1 to the question number and the player score for every question
+        # Adding 1 to the question number after every question
         question_number += 1
 
     # Returning users final score after all questions
     return player_score
 
 
+# Function containing numbers quiz
 def numbers_quiz(_quiz_score):
+    # Variables
     player_score = 0
     question_number = 0
     # List of the days
     numbers = [[1, "tahi"], [2, "rua"], [3, "toru"], [4, "wha"], [5, "rima"], [6, "ono"],
                [7, "whitu"], [8, "waru"], [9, "iwa"], [10, "tekau"]]
+    # Shuffling the numbers list in a random order
     random.shuffle(numbers)
 
+    # Welcome message
     print(formatter("-", "Welcome to the Numbers quiz"))
     print()
 
+    # While loop that repeats the quiz until the user has gone through all numbers 1 - 10.
     while question_number < 10:
 
+        # Asking user the number in order of the shuffled list.
         user_answer = input(f"What is the number {numbers[question_number][0]} in Maori: ").lower()
         print()
 
+        # If the user got it right, output 'You are correct'
         if user_answer == numbers[question_number][1]:
             player_score += 1
             print(formatter("=", "You are correct"))
             print()
+        # If the user got it wrong, output 'You are correct'
         else:
             print(formatter("*", "You are incorrect"))
             print()
 
+        # Adding 1 to the question number after every question
         question_number += 1
+
+    # Returning the players score
     return player_score
 
 
+# Formatter Function
 def formatter(symbol, text):
+
     sides = symbol * 3
     formatted_text = f"{sides} {text} {sides}"
     top_bottom = symbol * len(formatted_text)
@@ -156,14 +185,17 @@ def formatter(symbol, text):
 print(formatter("-", "Welcome to the Maori quiz"))
 print()
 
+# Asking the user if they have played before (yes/no function)
 tried_before = yes_no("Have you tried the quiz before? (Y for yes/N for No): ")
 print()
 
+# If the user said no redirecting to the instructions.
 if tried_before == "no":
     instructions()
 
 play_again = ""
 
+# While loop that repeats the quiz chooser function and the quizzes until user wants to exit.
 while play_again != "x":
     if play_again == "":
         quiz_chooser()

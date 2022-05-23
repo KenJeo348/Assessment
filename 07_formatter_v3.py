@@ -1,4 +1,4 @@
-"""Component 5 - statement formatter v3
+"""Component 7 - Statement Formatter V3
 Call function 3 times - once for each of the tests
 """
 
