@@ -41,8 +41,9 @@ def instructions():
           "After you choose you will get redirected to your chosen quiz\n"
           "You would have to write the displayed Day/Number in Maori/Te Reo'\n"
           "\n"
-          "After answering each question you will get told if you were right or wrong.\n"
-          "Your final score would be displayed at the end of the quiz, and you can either try again or leave the program.\n"
+          "After each question you will get told if you were right or wrong.\n"
+          "Your final score would be displayed at the end of the quiz,"
+          " and you can either try again or leave the program.\n"
           "\n"
           "Do you think you can get all the questions right?")
     print("-" * 50)
@@ -61,7 +62,8 @@ def quiz_chooser():
                   "1: Redirects to Days of the Week quiz\n"
                   "2: Redirects to Numbers 1-10 quiz\n")
             # Asking for choice
-            choose_quiz = int(input("Choose one of the options above and press enter: "))
+            choose_quiz = int(input("Choose one of the options above"
+                                    " and press enter: "))
             print()
 
             # If the user inputs 0, output 'Goodbye' than quit the program
@@ -83,7 +85,8 @@ def quiz_chooser():
                 print()
                 valid = True
 
-        # If the user enters an invalid answer, output 'Please enter a valid answer'
+        # If the user enters an invalid answer, output
+            # 'Please enter a valid answer'
             else:
                 print()
                 print(formatter("#", "Please enter a valid answer."))
@@ -100,8 +103,11 @@ def days_of_week_quiz(_quiz_score):
     # Variables and lists
     player_score = 0
     question_number = 0
-    days = [["Monday", "Rahina"], ["Tuesday", "Ratu"], ["Wednesday", "Raapa"], ["Thursday", "Rapare"],
-            ["Friday", "Ramere"], ["Saturday", "Rahoroi"], ["Sunday", "Ratapu"]]
+    days = [["Monday", "Rahina"], ["Tuesday", "Ratu"],
+            ["Wednesday", "Raapa"], ["Thursday", "Rapare"],
+            ["Friday", "Ramere"], ["Saturday", "Rahoroi"],
+            ["Sunday", "Ratapu"]]
+
     # Shuffling the (days) list in a random order for the quiz.
     random.shuffle(days)
 
@@ -113,7 +119,8 @@ def days_of_week_quiz(_quiz_score):
     while question_number < 7:
 
         # Asking user the day in order of the shuffled list.
-        user_answer = input(f"What is the Maori word for {days[question_number][0]}: ").title()
+        user_answer = input(f"What is the Maori word for "
+                            f"{days[question_number][0]}: ").title()
         print()
 
         # If the user got it right, output, "You are correct"
@@ -139,8 +146,10 @@ def numbers_quiz(_quiz_score):
     player_score = 0
     question_number = 0
     # List of the days
-    numbers = [[1, "tahi"], [2, "rua"], [3, "toru"], [4, "wha"], [5, "rima"], [6, "ono"],
-               [7, "whitu"], [8, "waru"], [9, "iwa"], [10, "tekau"]]
+    numbers = [[1, "tahi"], [2, "rua"], [3, "toru"], [4, "wha"], [5, "rima"],
+               [6, "ono"], [7, "whitu"], [8, "waru"], [9, "iwa"],
+               [10, "tekau"]]
+
     # Shuffling the numbers list in a random order
     random.shuffle(numbers)
 
@@ -148,11 +157,13 @@ def numbers_quiz(_quiz_score):
     print(formatter("-", "Welcome to the Numbers quiz"))
     print()
 
-    # While loop that repeats the quiz until the user has gone through all numbers 1 - 10.
+    # While loop that repeats the quiz until
+    # the user has gone through all numbers 1 - 10.
     while question_number < 10:
 
         # Asking user the number in order of the shuffled list.
-        user_answer = input(f"What is the number {numbers[question_number][0]} in Maori: ").lower()
+        user_answer = input(f"What is the number {numbers[question_number][0]}"
+                            f" in Maori: ").lower()
         print()
 
         # If the user got it right, output 'You are correct'
@@ -195,12 +206,14 @@ if tried_before == "no":
 
 play_again = ""
 
-# While loop that repeats the quiz chooser function and the quizzes until user wants to exit.
+# While loop that repeats the quiz chooser function
+# and the quizzes until user wants to exit.
 while play_again != "x":
     if play_again == "":
         quiz_chooser()
     else:
         print("Please enter a valid answer\n")
-    play_again = input("Do you want to play again (<enter> to play, or 'x' to quit): ")
+    play_again = input("Do you want to play again "
+                       "(<enter> to play, or 'x' to quit): ")
     print()
 print(formatter("~", "Goodbye"))

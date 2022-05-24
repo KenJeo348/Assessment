@@ -51,6 +51,6 @@ tried_before = yes_no("Have you tried the quiz before? (Y for yes/N for No): ")
 if tried_before == "no":
     instructions()
 
-# Otherwise continue the program.
+# Otherwise, continue the program.
 else:
     print("Program continues")
